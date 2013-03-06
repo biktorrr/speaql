@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version = "2.1" >
+
+ <form id="menu1">
+   <field name="product">
+   <prompt bargein="false">Welcome to RadioMarche, about which product would you like to have information:
+	<enumerate>
+	 For <value expr="_prompt"/>, press <value expr="_dtmf"/>.
+	</enumerate>
+   </prompt>
+   
+	<option dtmf="1" value="Beurre de karite">Beurre de karite</option>	
+	<option dtmf="2" value="Tamarin">Tamarin</option>
+	<option dtmf="3" value="Amande de karite">Amande de karite</option>
+	<filled>
+		<submit next="v2_sparql.php" namelist="product"/>
+ 	</filled>
+  </field>
+ </form>
+ </vxml>
