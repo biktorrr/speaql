@@ -1,19 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version = "2.1" >
 
- <form id="menu1">
+ <form id="menu0">
+   <field name="main">
+   <prompt bargein="true">Welcome to the Radio Mar shay Linked Data voice server. 
+	<enumerate>
+	 To <value expr="_prompt"/>, press <value expr="_dtmf"/>.
+	</enumerate>
+   </prompt>
+        <option dtmf="1" value="product">browse by product</option>	
+	<option dtmf="2" value="region">browse by region</option>
+	<option dtmf="3" value="latest">listen to the latest market information</option>
+  </field>
+   <filled namelist="main">
+      <if cond="main == 'product'">
+            <goto next="#menu1"/>
+      <elseif cond="main == 'region'"/>
+            <goto next="#menu2"/>
+      <elseif cond="main == 'latest'"/>
+            <goto next="v2_sparql_latest.php"/>
+      </if>
+  </filled>
+ </form>
+
+<form id="menu1">
    <field name="product">
-   <prompt bargein="false">Welcome to RadioMarche, about which product would you like to have information:
+   <prompt bargein="true">
+     About which product would you like to have information:
 	<enumerate>
 	 For <value expr="_prompt"/>, press <value expr="_dtmf"/>.
 	</enumerate>
    </prompt>
-   
-	<option dtmf="1" value="Beurre de karite">Beurre de karite</option>	
-	<option dtmf="2" value="Tamarin">Tamarin</option>
-	<option dtmf="3" value="Amande de karite">Amande de karite</option>
+	<option dtmf="1" value="Beurre de karite">Shea butter</option>	
+	<option dtmf="2" value="Tamarin">Tamarind</option>
+	<option dtmf="3" value="Amande de karite">Shea nuts</option>
 	<filled>
 		<submit next="v2_sparql.php" namelist="product"/>
+ 	</filled>
+  </field>
+ </form>
+
+<form id="menu2">
+   <field name="region">
+   <prompt bargein="false">
+     Please enter the region.
+	<enumerate>
+	 For <value expr="_prompt"/>, press <value expr="_dtmf"/>.
+	</enumerate>
+   </prompt>
+<option dtmf="1" value="diora">diora</option>
+<option dtmf="2" value="koula">Koula</option>
+<option dtmf="3" value="lanfiala">Lanfiala</option>
+<option dtmf="4" value="mafounde">mafoune</option>
+<option dtmf="5" value="mandiakuy">Mandiakuy</option>
+	<filled>
+		<submit next="v2_sparql_region.php" namelist="region"/>
  	</filled>
   </field>
  </form>
